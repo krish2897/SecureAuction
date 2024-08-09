@@ -91,12 +91,6 @@ celery -A bidding worker --loglevel=info
    - View your posted auctions.
    - Monitor bids and auction progress.
 
-## Demo
-
-
-https://github.com/Sandesh-Pyakurel/Bidding/assets/82999440/019af915-c659-41ab-a2c0-c3f39da5ee07
-
-
 
 ## Security
 
