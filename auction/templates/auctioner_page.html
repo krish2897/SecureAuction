@@ -1,0 +1,64 @@
+ 
+{% extends 'base.html'%}
+{% load static tailwind_tags %}
+
+ {% comment %} <h2>Auctioner Page</h2>
+{{ request.user }}
+
+<a href="{% url 'add-auction' %}">Add Auction</a>
+
+<hr>
+
+{% for auction in auction_list %}
+    <p>Auction id: {{ auction.id }}</p>
+    <p>Name: {{ auction.name }}</p>
+    <p>Description: {{ auction.description }}</p>
+    <img src="{{ auction.image.url }}" alt="">
+    <p>Base Price: {{ auction.base_price }}</p>
+    <p>Auctioner: {{ auction.auctioner }}</p>
+    <p>Starting date: {{ auction.created_date }}</p>
+    <p>Ending date: {{ auction.ending_date }}</p>
+    <p>Is closed: {{ auction.is_closed }}</p>
+    <p>Bids count: {{ auction.bid_count }}</p>
+    <p>Max bids: {{ auction.max_bids }}</p>
+    <p>Winner: {{ auction.get_winner }}</p>
+    <hr>
+{% endfor %}  {% endcomment %}
+
+{% block title %}
+    BidSecure
+{% endblock %}
+{% block body %}
+<div class="min-h-screen">
+    {% include "header.html" %}
+    <section class="grid grid-cols-5 border-t"> 
+        <div class="bg-white border-r-4 sticky px-8 min-h-[90vh] md:flex flex-col hidden">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">Filters</h2>
+            </div>
+            <div class="p-4 space-y-3">
+                <a href="?filter=completed&search={{ search_query|default_if_none:'' }}" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-check-circle"></i> Completed</a>
+                <a href="?filter=ongoing&search={{ search_query|default_if_none:'' }}" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-clock"></i> Ongoing</a>
+                <a href="?filter=upcoming&search={{ search_query|default_if_none:'' }}" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-calendar-alt"></i> Upcoming</a>
+                <a href="{% url 'add-auction' %}" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-plus"></i> Add Item to Auction</a>
+            </div>
+        </div>
+        <div class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-[24px] my-[24px]">
+            {% for auction in auction_list %}
+            <a href="{% url 'auction-detail' auction.id %}">
+            <div class="bg-white shadow-md rounded-lg p-4 border hover:cursor-pointer hover:shadow-[#cf1cc4] h-[335px] ">
+                <img src="{{ auction.image.url }}" alt="Item Image" class="rounded-xl w-full h-48 object-cover">
+                <hr/>
+                <div class="p-2">
+                    <h3 class="text-lg font-semibold">{{auction.name}}</h3>
+                    <p class="text-gray-600 text-sm">End Time: {{ auction.ending_date }}</p>
+                    <button class="mt-2 bg-[#cf1cc4] hover:bg-[#a12699] text-white px-4 py-2 rounded-full">View Details</button>
+                </div>
+            </div>
+        </a>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% include "footer.html" %}
+{% endblock %}

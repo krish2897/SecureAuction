@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Add Auction
+{% endblock title %}
+
+{% block style %}
+    <style>
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            letter-spacing: 1px;
+        }
+        input,textarea {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: none;
+            background-color: #f3f3f3 !important;
+            border-radius: .8rem !important; 
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus,textarea:focus,input[type="file"]:focus {
+            border-color: #cf1cc4 !important; 
+            box-shadow: 0 0 0 2px rgba(207, 28, 196, 0.4) !important; 
+        }
+        input[type="file"]::file-selector-button{
+            background-color: #ccc;
+            padding: 10px 20px;
+            border:none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    <div class="h-screen flex justify-center items-center bg-gray-50 flex-col gap-2 my-16">
+        <div class="p-12 px-24  rounded-3xl shadow-xl max-w-[60vw] w-full bg-white">
+            <h1 class="text-5xl font-bold text-center mb-6 ">Create Auction</h1>
+            <form method="post" enctype="multipart/form-data" class="space-y-3">
+                {% csrf_token %}
+                <div class="gap-1 flex flex-col font-medium">
+                    <label>Name:</label>
+                    {{form.name}}
+                    {% for error in form.name.errors %}{% endfor %}
+                </div>
+                <div class="gap-1 flex flex-col font-medium">
+                    <label >Description:</label>
+                    {{form.description}}
+                    {% for error in form.description.errors %}{% endfor %}
+                </div>
+                <div class="gap-1 flex flex-col font-medium">
+                    <label>Image:</label>
+                    {{form.image}}
+                    {% for error in form.image.errors %}{% endfor %}
+                </div>
+                <div class="gap-1 flex flex-col font-medium">
+                    <label>Base Price:</label>
+                    {{form.base_price}}
+                    {% for error in form.base_price.errors %}{% endfor %}
+                </div>
+                <button type="submit" class="w-full mt-10 py-2 px-4 border border-transparent rounded-3xl shadow-sm text-lg font-semibold text-white bg-[#cf1cc4] hover:bg-[#a12699] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#cf1cc4]">Create Auction</button>
+
+            </form>
+        </div>
+    </div>
+    {% include "footer.html" %}
+
+{% endblock body %}

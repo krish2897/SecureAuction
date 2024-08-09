@@ -1,0 +1,228 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %}
+BidSecure
+{% endblock %}
+{% block body %}
+<div class="max-w-full overflow-x-hidden">
+    <header class="flex justify-between my-[72px] mx-[144px]">
+        <h1 class="text-3xl font-bold flex flex-col">
+            <span>BROWSE</span>
+            <span>AUCTIONS</span>
+        </h1>
+        <div>
+            <a href="{% url 'login' %}"><button
+                    class="border-none shadow-md rounded-3xl px-10 py-4 mr-[16px] hover:bg-gray-50 hover:shadow-[#cf1cc4]">Login</button></a>
+            <a href="{% url 'signup' %}"><button
+                    class="border-none shadow-md rounded-3xl px-10 py-4 bg-[#cf1cc4] text-white hover:bg-[#a12699]  hover:shadow-md ">Sign
+                    up</button></a>
+        </div>
+    </header>
+    <main class="flex flex-row mx-[144px] mt-[84px] justify-between">
+        <div>
+            <img src="{% static 'images/hero1.png' %}" alt="Hero one">
+        </div>
+        <div class="flex flex-col justify-center items-center w-[791px] text-center">
+            <h1 class="text-7xl font-[700] mt-[44px] px-8 leading-tight tracking-tight">Explore and bid on exclusive
+                items</h1>
+            <div class="mt-[81px]">
+                <input type="text" placeholder="Place bid"
+                    class="border-2 border-gray-50 rounded-2xl px-4 py-2 w-[500px] h-[50px] shadow-lg">
+                <a href="{% url 'login' %}">
+                    <button
+                        class="border-none shadow-md rounded-3xl px-10 py-4 bg-[#cf1cc4] hover:bg-[#a12699]  text-white mx-[16px] font-bold">Search</button>
+                </a>
+            </div>
+        </div>
+        <div class="flex items-end">
+            <div><img src="{% static 'images/hero2.png' %}" alt="Hero one"></div>
+        </div>
+    </main>
+    <section>
+        <div class="mx-[144px] mt-[270px] border-gray-200 rounded-lg">
+            <div class="flex justify-between items-center hover:cursor-pointer border-y-2 w-full p-4 py-8"
+                id="dropdown">
+                <h2 class="text-3xl font-semibold tracking-wide">How BidSecure works</h2>
+                <button id="dropdownButton" class="text-xl">
+                    &#x25BC; <!-- Downward outlined arrow -->
+                </button>
+            </div>
+            <div id="dropdownContent" class="mt-4 hidden">
+                <p class="my-4 mx-4 text-lg">BidSecure uses tinybid and tinybid for secure bidding. Tinybid is a Minimal
+                    pure-Python library that implements a basic single-item first-price auction via a secure multi-party
+                    computation protocol. You can place auctions without worrying about your bid leak.</p>
+            </div>
+        </div>
+        <script>
+            document.getElementById('dropdown').addEventListener('click', function () {
+                var content = document.getElementById('dropdownContent');
+                var button = document.getElementById('dropdownButton');
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    button.innerHTML = '&#x25B2;'; // Upward outlined arrow
+                } else {
+                    content.classList.add('hidden');
+                    button.innerHTML = '&#x25BC;'; // Downward outlined arrow
+                }
+            });
+        </script>
+
+        <div class="mx-[144px] grid grid-cols-1 md:grid-cols-3 border-y-2">
+            <div class="py-[40px] px-[46px]">
+                <img src="{% static 'images/step1.png' %}" alt="Step 2" class="mx-auto mb-4">
+                <div class="px-8">
+                    <h3 class="text-2xl font-bold">Step 1</h3>
+                    <p class="text-xl mt-4">Enter your bid amount. Keep it anonymous and secure with BidSecure.</p>
+                </div>
+            </div>
+            <div class="py-[40px] px-[46px] border-x-2">
+                <img src="{% static 'images/step2.png' %}" alt="Step 2" class="mx-auto mb-4">
+                <div class="px-8">
+                    <h3 class="text-2xl font-bold">Step 2</h3>
+                    <p class="text-xl mt-4">Now place your bid on the desired item. You're one step closer to winning
+                        the auction.</p>
+                </div>
+            </div>
+            <div class="py-[40px] px-[46px]">
+                <img src="{% static 'images/step3.png' %}" alt="Step 3" class="mx-auto mb-4">
+                <div class="px-8">
+                    <h3 class="text-2xl font-bold">Step 3</h3>
+                    <p class="text-xl mt-4">Complete your payment securely. Sit back and relax as we process your
+                        winning bid!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="mx-[144px] border-gray-200 rounded-lg">
+            <div class="flex justify-between items-center hover:cursor-pointer border-y-2 w-full p-4 py-8"
+                id="dropdown2">
+                <h2 class="text-3xl font-semibold tracking-wide">Join BidSecure as a user</h2>
+                <button id="dropdownButton2" class="text-xl">
+                    &#x25BC; <!-- Downward outlined arrow -->
+                </button>
+            </div>
+            <div id="dropdownContent2" class="mt-4 hidden">
+                <p class="my-4 mx-4 text-lg">You can login as an auctioneer to securely list items for auction, set
+                    start and end times. As a bidder, explore available auctions, place bids privately, and track your
+                    bidding history. Stay informed with auction outcomes. Our platform ensures security with end-to-end
+                    encryption, secure bid storage, and role-based access control to prevent fraud and maintain privacy.
+                </p>
+            </div>
+        </div>
+        <script>
+            document.getElementById('dropdown2').addEventListener('click', function () {
+                var content = document.getElementById('dropdownContent2');
+                var button = document.getElementById('dropdownButton2');
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    button.innerHTML = '&#x25B2;';
+                } else {
+                    content.classList.add('hidden');
+                    button.innerHTML = '&#x25BC;';
+                }
+            });
+        </script>
+
+        <div class="max-w-6xl mx-auto px-14 mt-8">
+            <div class="flex flex-col md:flex-row items-center mb-8">
+                <img src="{% static 'images/bidder.png' %}" alt="As a bidder" class="w-[360px] h-auto mx-auto">
+                <div class="text-center md:text-left md:ml-14 md:max-w-md">
+                    <h3 class="text-3xl font-bold">As a bidder</h3>
+                    <p class="mt-4 text-xl">Participate in auctions anonymously. All you need is a secure connection.
+                    </p>
+                    <a href="{% url 'signup' %}">
+                        <button
+                            class="border-none shadow-md rounded-3xl px-10 py-4 mr-[16px] mt-4 hover:bg-gray-50 hover:shadow-[#cf1cc4]">Bid
+                            Now</button>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="flex flex-col md:flex-row items-center mb-8">
+                <img src="{% static 'images/seller.png' %}" alt="As a seller" class="w-[360px] h-auto mx-auto">
+                <div class="text-center md:text-left md:max-w-md">
+                    <h3 class="text-3xl font-bold">As a seller</h3>
+                    <p class="mt-4 text-xl">List items for auction with BidSecure, ensuring secure transactions and
+                        encrypted
+                        bids.</p>
+                    <a href="{% url 'signup' %}">
+                        <button
+                            class="border-none shadow-md rounded-3xl px-10 py-4 mr-[16px] mt-4 hover:bg-gray-50 hover:shadow-[#cf1cc4]">Sell
+                            with us</button>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="flex flex-col md:flex-row items-center mb-8">
+                <img src="{% static 'images/team_member.png' %}" alt="As a team member"
+                    class="w-[360px] h-auto mx-auto">
+                <div class="text-center md:text-left md:max-w-md">
+                    <h3 class="text-3xl font-bold">As a team member</h3>
+                    <p class="mt-4 text-xl">Join our team dedicated to providing top-notch auction services.</p>
+                    <a href="{% url 'signup' %}">
+                        <button
+                            class="border-none shadow-md rounded-3xl px-10 py-4 mr-[16px] mt-4 hover:bg-gray-50 hover:shadow-[#cf1cc4]">Join
+                            us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mx-[144px] pb-[24px] border-b-2">
+        <div class="border-gray-200 rounded-lg">
+            <div class="flex justify-between items-center hover:cursor-pointer border-y-2 w-full p-4 py-8"
+                id="dropdown3">
+                <h2 class="text-3xl font-semibold tracking-wide">Get started with our secure platform.</h2>
+                <button id="dropdownButton3" class="text-xl">
+                    &#9660;
+                </button>
+            </div>
+            <div id="dropdownContent3" class="mt-4 hidden">
+                <p class="my-4 mx-4 text-lg">With BidSecure, you can place bids on any auctioned items without worrying
+                    about your data being leaked. Our platform employs state-of-the-art encryption to protect your
+                    personal information and bid details. Auctioneers can securely list items, set auction parameters,
+                    and receive real-time updates. Bidders can confidently explore auctions, place private bids, and
+                    track their activity, all while benefiting from robust security measures like end-to-end encryption
+                    and secure bid storage. BidSecure ensures a safe and transparent auction experience for all users..
+                </p>
+            </div>
+        </div>
+        <script>
+            document.getElementById('dropdown3').addEventListener('click', function () {
+                var content = document.getElementById('dropdownContent3');
+                var button = document.getElementById('dropdownButton3');
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    button.innerHTML = '&#9650;'; // Upward arrow
+                } else {
+                    content.classList.add('hidden');
+                    button.innerHTML = '&#9660;'; // Downward arrow
+                }
+            });
+        </script>
+        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-[194px] items-center mt-[24px]">
+            <div class="px-8">
+                <h3 class="text-3xl font-bold">Bid with confidence!</h3>
+                <p class="text-xl mt-[16px]">Securely bid on exclusive items with BidSecure. Our encrypted platform
+                    offers a wide range of auctioned items.</p>
+                    <a href="{% url 'login' %}">
+                <button
+                    class="border-none shadow-md rounded-3xl px-10 py-4 bg-[#cf1cc4] hover:bg-[#a12699]  text-white mt-[32px]">Get
+                    Started</button>
+                    </a>
+            </div>
+            <div>
+                <img src="{% static 'images/bid_with_confidence.png' %}" alt="As a team member"
+                    class="w-[360px] h-auto mx-auto">
+            </div>
+        </div>
+    </section>
+    <div class="mt-[235px]">
+        {% include "footer.html" %}
+    </div>
+
+</div>
+{% endblock %}

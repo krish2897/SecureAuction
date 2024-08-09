@@ -1,0 +1,46 @@
+---
+program: main
+inputs:
+  secrets:
+    bid7:
+      SecretInteger: "3"
+    bid3:
+      SecretInteger: "3"
+    bid1:
+      SecretInteger: "3"
+    bid6:
+      SecretInteger: "3"
+    bid4:
+      SecretInteger: "3"
+    bid5:
+      SecretInteger: "3"
+    bid10:
+      SecretInteger: "3"
+    bid9:
+      SecretInteger: "3"
+    bid2:
+      SecretInteger: "3"
+    bid8:
+      SecretInteger: "3"
+  public_variables: {}
+expected_outputs:
+  output7:
+    SecretInteger: "3"
+  output1:
+    SecretInteger: "3"
+  output3:
+    SecretInteger: "3"
+  output8:
+    SecretInteger: "3"
+  output6:
+    SecretInteger: "3"
+  output2:
+    SecretInteger: "3"
+  output9:
+    SecretInteger: "3"
+  output4:
+    SecretInteger: "3"
+  output5:
+    SecretInteger: "3"
+  output10:
+    SecretInteger: "3"

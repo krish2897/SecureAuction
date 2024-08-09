@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% load static tailwind_tags %}
+
+{% block title %}
+    BidSecure
+{% endblock %}
+{% block body %}
+<div class="min-h-screen">
+    <header class="mx-8 flex justify-between my-[16px] h-full">
+        <h1 class="text-center text-2xl font-bold">BidSecure</h1>
+        <div>
+            <input type="text" placeholder="Search auction items"
+                class="border-2 border-gray-50 rounded-2xl px-4 py-2 w-[500px] h-[50px] shadow-lg">
+        </div>
+        <div>
+            <img src="{% static 'images/user_icon.png' %}" alt="User">
+        </div>
+    </header>
+    <section class="grid grid-cols-5 border-t"> 
+        <div class="bg-white border-r-4 sticky px-8 min-h-[90vh] flex flex-col">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">Filters</h2>
+            </div>
+            <div class="p-4 space-y-3">
+                <a href="#" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-check-circle"></i> Completed</a>
+                <a href="#" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-clock"></i> Ongoing</a>
+                <a href="#" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-calendar-alt"></i> Upcoming</a>
+                <a href="#" class="block text-gray-600 hover:text-[#cf1cc4]"><i class="fas fa-plus"></i> Add Item to Auction</a>
+            </div>
+        </div>
+        <div class="col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-[24px] my-[24px]">
+            {% for _ in '123' %}
+                {% include 'auctions/card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+    
+</section>
+{% include "footer.html" %}
+{% endblock %}

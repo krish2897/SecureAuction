@@ -1,0 +1,15 @@
+{% load static tailwind_tags %}
+
+<header class="mx-8 flex justify-between my-[16px] h-full">
+    <h1 class="text-center text-2xl font-bold flex items-center"><a href="/">BidSecure</a></h1>
+    <div>
+        <form method="get">
+            <input type="text" name="search" value="{{ search_query|default_if_none:''}}" placeholder="Search auction items"
+                class="border-2 border-gray-50 rounded-2xl px-4 py-2 w-[500px] h-[50px] shadow-lg">
+            <button type="submit" class="hidden">Search</button>
+        </form>
+    </div>
+    <div class="flex items-center">
+        <img src="{% static 'images/user_icon.png' %}" alt="User">
+    </div>
+</header>

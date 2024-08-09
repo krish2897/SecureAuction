@@ -1,0 +1,22 @@
+---
+program: main
+inputs:
+  secrets:
+    bid3:
+      SecretUnsignedInteger: "3"
+    bid4:
+      SecretUnsignedInteger: "3"
+    bid2:
+      SecretUnsignedInteger: "3"
+    bid5:
+      SecretUnsignedInteger: "3"
+  public_variables: {}
+expected_outputs:
+  output2:
+    SecretInteger: "3"
+  output5:
+    SecretInteger: "3"
+  output3:
+    SecretInteger: "3"
+  output4:
+    SecretInteger: "3"

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock title %}
+
+{% block style %}
+    <style>
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            letter-spacing: 1px;
+        }
+        input,select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: none;
+            background-color: #f3f3f3 !important;
+            border-radius: .8rem !important; 
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus,select:focus {
+            border-color: #cf1cc4 !important; 
+            box-shadow: 0 0 0 2px rgba(207, 28, 196, 0.4) !important; 
+        }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    <div class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="p-8 px-12 bg-white rounded-2xl shadow-lg max-w-md w-full">
+            <h2 class="text-4xl font-bold text-center mb-6">Sign Up</h2>
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                <div class="gap-3 flex flex-col">
+                    Username:
+                    {{form.username}}
+                    {% for error in form.username.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="gap-3 flex flex-col">
+                    User Type:
+                    {{form.user_type}}
+                    {% for error in form.username.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="gap-3 flex flex-col">
+                    Password:
+                    {{form.password1}}
+                    {% for error in form.password1.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="gap-3 flex flex-col">
+                    Password confirmation:
+                    {{form.password2}}
+                    {% for error in form.password2.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-3xl shadow-sm text-lg font-semibold text-white bg-[#cf1cc4] hover:bg-[#a12699] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#cf1cc4]">Sign Up</button>
+                <div class="text-center flex gap-4 flex-col">
+                    <div class="block font-medium text-gray-600">Already have an account?</div>
+                    <a href="{% url 'login'%}" class="block font-medium text-[#cf1cc4] hover:text-[#a12699]">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock body %}
+
